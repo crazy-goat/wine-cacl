@@ -1,4 +1,4 @@
 .rr.yml
 .idea
-rr
+bin/rr
 vendor

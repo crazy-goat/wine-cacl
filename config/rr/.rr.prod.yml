@@ -1,0 +1,11 @@
+http:
+  address:         0.0.0.0:8080
+  workers:
+    command: "php wine-calc-worker.php pipes"
+    relay:    "pipes"
+    pool:
+      numWorkers: 1
+      maxJobs:  1
+static:
+  dir:   "public"
+  forbid: [".php", ".htaccess"]

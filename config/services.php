@@ -1,0 +1,47 @@
+<?php
+declare(strict_types=1);
+
+use Psr\Container\ContainerInterface;
+
+return [
+    'rr:server' => function (): \Spiral\RoadRunner\PSR7Client {
+        return new Spiral\RoadRunner\PSR7Client(
+            new Spiral\RoadRunner\Worker(
+                new Spiral\Goridge\StreamRelay(STDIN, STDOUT)
+            )
+        );
+    },
+    'app' => function (ContainerInterface $container): \Slim\App {
+        $app = \Slim\Factory\AppFactory::create(
+            \Slim\Factory\AppFactory::determineResponseFactory(),
+            $container
+        );
+        $app->addErrorMiddleware(true, true, true);
+        $app->addMiddleware($container->get('middleware.accept-language'));
+        return $app;
+    },
+    'middleware.accept-language' => function(ContainerInterface $container): \WineCalc\Middleware\AcceptLanguage {
+        return new \WineCalc\Middleware\AcceptLanguage(
+            $container->get('translator')
+        );
+    },
+    'renderer' => function (ContainerInterface $container): \League\Plates\Engine {
+        $engine =  new League\Plates\Engine($container->get('template')['path']);
+        $engine->loadExtension($container->get('renderer.translator'));
+        return $engine;
+    },
+    'renderer.translator' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\Translator {
+        return new \WineCalc\Plates\Extensions\Translator(
+            $container->get('translator')
+        );
+    },
+    'translator' => function (): \Symfony\Component\Translation\Translator {
+        $translator = new \Symfony\Component\Translation\Translator(null);
+        $translator->addLoader('array', new \Symfony\Component\Translation\Loader\ArrayLoader());
+        $translator->addResource('array', include __DIR__ . '/../data/i18n/pl.php', 'pl');
+        $translator->addResource('array', include __DIR__ . '/../data/i18n/en.php', 'en');
+        $translator->setFallbackLocales(['en']);
+
+        return $translator;
+    }
+];

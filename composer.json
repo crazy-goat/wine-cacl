@@ -1,0 +1,22 @@
+{
+  "require": {
+    "spiral/roadrunner": "^1.5",
+    "slim/slim": "^4.0",
+    "league/plates": "^3.3",
+    "php-di/php-di": "^6.0",
+    "symfony/translation": "^4.3",
+    "ext-intl": "*"
+  },
+  "scripts": {
+    "init-dev": "cp config/rr/.rr.dev.yml .rr.yml",
+    "init-prod": "cp config/rr/.rr.prod.yml .rr.yml",
+    "init-rr": "rm -f bin/rr || true&& ./vendor/bin/rr get-binary -l bin -n",
+    "start-dev": "./bin/rr serve -v -d",
+    "start": "./bin/rr serve"
+  },
+  "autoload": {
+    "psr-4": {
+      "WineCalc\\": "src/WineCalc"
+    }
+  }
+}

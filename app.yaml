@@ -13,6 +13,6 @@ resources:
 default_expiration: "30d"
 
 handlers:
-  - url: /vendor
-    static_dir: public/vendor
+  - url: /.+     # this should handle the favicon.ico, but see below
+    static_dir: public
     expiration: "30d"

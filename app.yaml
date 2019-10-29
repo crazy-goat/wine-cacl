@@ -8,8 +8,9 @@ network: {}
 resources:
   cpu: 1
   memory_gb: 0.5
-  disk_size_gb: 10
+  disk_size_gb: 2
 
 handlers:
   - url: /vendor
     static_dir: public/vendor
+    expiration: "365d"

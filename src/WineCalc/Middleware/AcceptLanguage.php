@@ -34,25 +34,25 @@ final class AcceptLanguage implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->hasHeader('Accept-Language')) {
-            $langs = $this->getAcceptedLangs($request->getHeaderLine('Accept-Language'));
-            foreach ($langs as $lang) {
+            $languages = $this->getAcceptedLanguages($request->getHeaderLine('Accept-Language'));
+
+            foreach ($languages as $lang) {
                 if (in_array($lang, $this->availTranslations)) {
                     $this->translator->setLocale($lang);
-                    break;
+                    return $handler->handle($request);
                 }
             }
         }
         $this->translator->setLocale($this->defaultLocale);
-        $response = $handler->handle($request);
-        return $response;
+        return $handler->handle($request);
     }
 
-    private function getAcceptedLangs(string $header): array
+    private function getAcceptedLanguages(string $header): array
     {
-        $langs = explode(',', $header);
+        $languages = explode(',', $header);
 
-        $langs = array_reduce(
-            $langs,
+        $languages = array_reduce(
+            $languages,
             function (array $carry, string $lang) {
                 $lang = strtolower(substr(trim($lang), 0, 2));
                 if (preg_match('/^[a-z]{2}$/', $lang) === 1) {
@@ -63,6 +63,6 @@ final class AcceptLanguage implements MiddlewareInterface
             []
         );
 
-        return $langs;
+        return $languages;
     }
 }

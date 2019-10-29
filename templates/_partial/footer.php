@@ -1,5 +1,6 @@
 <footer class="bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        <p class="m-0 text-center text-white"><a class="text-white" href="https://crazy-goat.com">Crazy Goat Software</a>
+            &copy; <?= $this->trans('app.name').' '.date('Y') ?> </p>
     </div>
 </footer>

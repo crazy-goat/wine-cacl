@@ -1,6 +1,5 @@
 <?php
-// worker.php
-use Slim\Factory\AppFactory;
+declare(strict_types=1);
 
 ini_set('display_errors', 'stderr');
 include "vendor/autoload.php";

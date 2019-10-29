@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $this->lang() ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="<?= $this->trans('html.head.description'); ?>">
-    <meta name="author" content="<?= $this->trans('html.head.author'); ?>">
-    <title><?= $this->trans('html.head.title'); ?></title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <meta name="description" content="<?= $seo_description ?? $this->trans('html.head.description'); ?>">
+    <meta name="author" content="<?= $seo_author ?? $this->trans('html.head.author'); ?>">
+    <title><?= $seo_title ?? $this->trans('html.head.title'); ?></title>
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/scrolling-nav.css" rel="stylesheet">
 </head>
 <body id="page-top">
 <?php $this->insert('_partial/navigation') ?>
@@ -17,7 +17,7 @@
     </div>
 </div>
 <?php $this->insert('_partial/footer') ?>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

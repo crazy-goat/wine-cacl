@@ -27,10 +27,16 @@ class Translator implements ExtensionInterface
     public function register(Engine $engine)
     {
         $engine->registerFunction('trans', [$this, 'trans']);
+        $engine->registerFunction('lang', [$this, 'lang']);
     }
 
     public function trans(): string {
         $args = func_get_args();
         return $this->translator->trans(...$args);
+    }
+
+    public function lang(): string
+    {
+        return $this->translator->getLocale();
     }
 }

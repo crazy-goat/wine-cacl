@@ -16,8 +16,8 @@ return [
             \Slim\Factory\AppFactory::determineResponseFactory(),
             $container
         );
-        $app->addRoutingMiddleware();
         $app->addMiddleware($container->get('middleware.accept-language'));
+        $app->addRoutingMiddleware();
 
         $errorMiddleware = $app->addErrorMiddleware(true, true, true);
         $errorMiddleware->getDefaultErrorHandler()->registerErrorRenderer(
@@ -30,7 +30,7 @@ return [
         return new \WineCalc\Middleware\AcceptLanguage(
             $container->get('translator'),
             $container->get('translations'),
-            $container->get('default_locale')
+            (string)$container->get('default_locale')
         );
     },
     'renderer' => function (ContainerInterface $container): \League\Plates\Engine {
@@ -52,8 +52,17 @@ return [
 
         return $translator;
     },
-    'error_handler.html' => function(ContainerInterface $container):\Slim\Interfaces\ErrorRendererInterface
+    'error_handler.html' => function(ContainerInterface $container): \Slim\Interfaces\ErrorRendererInterface
     {
         return new \WineCalc\ErrorHandler\Html($container->get('renderer'));
+    },
+    'staticPage::loader' => function(ContainerInterface $container): \WineCalc\StaticPages\Loader {
+        return new \WineCalc\StaticPages\Loader(
+            (string)$container->get('static_pages_dir'),
+            $container->get('translations')
+        );
+    },
+    'staticPage::render' => function(ContainerInterface $container): \WineCalc\StaticPages\Data {
+        return new \WineCalc\StaticPages\Data($container->get('staticPage::loader'));
     }
 ];

@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Slim\Interfaces\RouteInterface;
 use Symfony\Component\Translation\Translator;
 
 final class AcceptLanguage implements MiddlewareInterface
@@ -33,12 +34,22 @@ final class AcceptLanguage implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $route = $request->getAttribute('route');
+
+        if ($route instanceof RouteInterface) {
+            $culture = $route->getArgument('culture');
+            if (is_string($culture) && in_array($culture, $this->availTranslations)) {
+                $this->translator->setLocale($culture);
+                return $handler->handle($request);
+            }
+        }
+
         if ($request->hasHeader('Accept-Language')) {
             $languages = $this->getAcceptedLanguages($request->getHeaderLine('Accept-Language'));
 
-            foreach ($languages as $lang) {
-                if (in_array($lang, $this->availTranslations)) {
-                    $this->translator->setLocale($lang);
+            foreach ($languages as $culture) {
+                if (in_array($culture, $this->availTranslations)) {
+                    $this->translator->setLocale($culture);
                     return $handler->handle($request);
                 }
             }

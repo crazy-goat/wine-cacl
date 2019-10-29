@@ -5,5 +5,6 @@ return [
         'path' => realpath(__DIR__.'/../templates')
     ],
     'translations' => ['en', 'pl'],
-    'default_locale' => 'en'
+    'default_locale' => 'en',
+    'static_pages_dir' => realpath(__DIR__.'/../data/static_pages')
 ];

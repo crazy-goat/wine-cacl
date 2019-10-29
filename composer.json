@@ -5,7 +5,9 @@
     "league/plates": "^3.3",
     "php-di/php-di": "^6.0",
     "symfony/translation": "^4.3",
-    "ext-intl": "*"
+    "ext-intl": "*",
+    "ext-json": "*",
+    "erusev/parsedown": "^1.7"
   },
   "scripts": {
     "init-dev": "cp config/rr/.rr.dev.yml .rr.yml",

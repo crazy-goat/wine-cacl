@@ -2,6 +2,11 @@
 
 <header class="bg-primary text-white">
     <div class="container text-center">
-        <h1>404 - <?= $this->trans('error.404'); ?></h1>
+        <h1><?= $title ?></h1>
+        <p class="lead"><?= $head ?></p>
     </div>
 </header>
+
+<div class="container">
+    <?= $content ?>
+</div>

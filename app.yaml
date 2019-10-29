@@ -10,7 +10,9 @@ resources:
   memory_gb: 0.5
   disk_size_gb: 10
 
+default_expiration: "30d"
+
 handlers:
   - url: /vendor
     static_dir: public/vendor
-    expiration: "365d"
+    expiration: "30d"

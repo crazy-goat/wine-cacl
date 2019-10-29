@@ -6,5 +6,6 @@ return [
     'app.name' => 'Kalkulator winiarski',
     'Wine recipes' => 'Przepisy na wina',
     'About' => 'O stronie',
-    'error.404' => 'Podana strona nie istnieje!'
+    'error.404' => 'Podana strona nie istnieje!',
+    'Welcome to Wine Calculator' => 'Witamy na stronie Kalkulatora Winiarskiego'
 ];

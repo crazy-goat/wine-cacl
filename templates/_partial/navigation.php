@@ -11,7 +11,8 @@
                     <a class="nav-link js-scroll-trigger" href="#"><?= $this->trans('Wine recipes') ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#"><?= $this->trans('About') ?></a>
+                    <a class="nav-link js-scroll-trigger"
+                       href="<?= $this->staticPageUrl('about', $this->lang()); ?>"><?= $this->trans('About') ?></a>
                 </li>
             </ul>
         </div>

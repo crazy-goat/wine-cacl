@@ -3,7 +3,7 @@
 <header class="bg-primary text-white">
     <div class="container text-center">
         <h1><?= $title ?></h1>
-        <p class="lead"><?= $head ?></p>
+        <?php if(!empty($head)): ?><p class="lead"><?= $head ?></p><?php endif;?>
     </div>
 </header>
 

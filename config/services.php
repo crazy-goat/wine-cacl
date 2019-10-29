@@ -36,11 +36,22 @@ return [
     'renderer' => function (ContainerInterface $container): \League\Plates\Engine {
         $engine =  new League\Plates\Engine($container->get('template')['path']);
         $engine->loadExtension($container->get('renderer.translator'));
+        $engine->loadExtension($container->get('renderer.static-page-link'));
         return $engine;
     },
     'renderer.translator' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\Translator {
         return new \WineCalc\Plates\Extensions\Translator(
             $container->get('translator')
+        );
+    },
+    'app.closure' => function(ContainerInterface $container): \Closure{
+        return function() use ($container): \Slim\Interfaces\RouteParserInterface {
+            return $container->get('app')->getRouteCollector()->getRouteParser();
+        };
+    },
+    'renderer.static-page-link' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\StaticPageLink {
+        return new \WineCalc\Plates\Extensions\StaticPageLink(
+            $container->get('app.closure')
         );
     },
     'translator' => function (ContainerInterface $container): \Symfony\Component\Translation\Translator {

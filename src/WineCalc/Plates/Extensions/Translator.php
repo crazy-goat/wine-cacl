@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: piotr
- * Date: 26.10.19
- * Time: 21:09
- */
+declare(strict_types=1);
 
 namespace WineCalc\Plates\Extensions;
 
@@ -12,7 +7,7 @@ use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use Symfony\Component\Translation\Translator as SymfonyTranslator;
 
-class Translator implements ExtensionInterface
+final class Translator implements ExtensionInterface
 {
     /**
      * @var SymfonyTranslator

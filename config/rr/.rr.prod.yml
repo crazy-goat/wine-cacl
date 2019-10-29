@@ -4,8 +4,8 @@ http:
     command: "php wine-calc-worker.php pipes"
     relay:    "pipes"
     pool:
-      numWorkers: 1
-      maxJobs:  1
+      numWorkers: 8
+      maxJobs:  10000
 static:
   dir:   "public"
   forbid: [".php", ".htaccess"]

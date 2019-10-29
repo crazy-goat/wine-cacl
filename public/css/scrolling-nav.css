@@ -4,9 +4,30 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
  */
 header {
-  padding: 86px 0 30px;
+    padding: 86px 0 30px;
 }
 
 section {
-  padding: 150px 0;
+    padding: 150px 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 50px; /* this needs to be bigger than footer height*/
+}
+
+footer {
+    position: relative;
+    margin-top: -50px; /* negative value of footer height */
+    height: 50px;
+    clear: both;
+    padding-top: 13px;
 }

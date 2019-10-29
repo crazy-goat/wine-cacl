@@ -16,13 +16,21 @@ return [
             \Slim\Factory\AppFactory::determineResponseFactory(),
             $container
         );
-        $app->addErrorMiddleware(true, true, true);
+        $app->addRoutingMiddleware();
         $app->addMiddleware($container->get('middleware.accept-language'));
+
+        $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+        $errorMiddleware->getDefaultErrorHandler()->registerErrorRenderer(
+            'text/html',
+            $container->get('error_handler.html')
+        );
         return $app;
     },
     'middleware.accept-language' => function(ContainerInterface $container): \WineCalc\Middleware\AcceptLanguage {
         return new \WineCalc\Middleware\AcceptLanguage(
-            $container->get('translator')
+            $container->get('translator'),
+            $container->get('translations'),
+            $container->get('default_locale')
         );
     },
     'renderer' => function (ContainerInterface $container): \League\Plates\Engine {
@@ -35,13 +43,17 @@ return [
             $container->get('translator')
         );
     },
-    'translator' => function (): \Symfony\Component\Translation\Translator {
+    'translator' => function (ContainerInterface $container): \Symfony\Component\Translation\Translator {
         $translator = new \Symfony\Component\Translation\Translator(null);
         $translator->addLoader('array', new \Symfony\Component\Translation\Loader\ArrayLoader());
         $translator->addResource('array', include __DIR__ . '/../data/i18n/pl.php', 'pl');
         $translator->addResource('array', include __DIR__ . '/../data/i18n/en.php', 'en');
-        $translator->setFallbackLocales(['en']);
+        $translator->setFallbackLocales([$container->get('default_locale')]);
 
         return $translator;
+    },
+    'error_handler.html' => function(ContainerInterface $container):\Slim\Interfaces\ErrorRendererInterface
+    {
+        return new \WineCalc\ErrorHandler\Html($container->get('renderer'));
     }
 ];

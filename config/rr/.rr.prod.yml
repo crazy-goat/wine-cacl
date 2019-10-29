@@ -4,7 +4,7 @@ http:
     command: "php wine-calc-worker.php pipes"
     relay:    "pipes"
     pool:
-      numWorkers: 8
+      numWorkers: 4
       maxJobs:  10000
 static:
   dir:   "public"

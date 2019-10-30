@@ -36,7 +36,7 @@ return [
     'renderer' => function (ContainerInterface $container): \League\Plates\Engine {
         $engine =  new League\Plates\Engine($container->get('template')['path']);
         $engine->loadExtension($container->get('renderer.translator'));
-        $engine->loadExtension($container->get('renderer.static-page-link'));
+        $engine->loadExtension($container->get('renderer.links'));
         return $engine;
     },
     'renderer.translator' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\Translator {
@@ -49,8 +49,8 @@ return [
             return $container->get('app')->getRouteCollector()->getRouteParser();
         };
     },
-    'renderer.static-page-link' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\StaticPageLink {
-        return new \WineCalc\Plates\Extensions\StaticPageLink(
+    'renderer.links' => function(ContainerInterface $container): \WineCalc\Plates\Extensions\Links {
+        return new \WineCalc\Plates\Extensions\Links(
             $container->get('app.closure')
         );
     },

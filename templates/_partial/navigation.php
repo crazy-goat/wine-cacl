@@ -8,7 +8,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#"><?= $this->trans('Wine recipes') ?></a>
+                    <a class="nav-link js-scroll-trigger"
+                       href="<?= $this->recipeListUrl($this->lang()); ?>"><?= $this->trans('Wine recipes') ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger"

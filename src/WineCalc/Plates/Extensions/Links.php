@@ -7,7 +7,7 @@ use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use Slim\Interfaces\RouteParserInterface;
 
-final class StaticPageLink implements ExtensionInterface
+final class Links implements ExtensionInterface
 {
     /**
      * @var RouteParserInterface
@@ -22,10 +22,16 @@ final class StaticPageLink implements ExtensionInterface
     public function register(Engine $engine)
     {
         $engine->registerFunction('staticPageUrl', [$this, 'staticPageUrl']);
+        $engine->registerFunction('recipeListUrl', [$this, 'recipeListUrl']);
     }
 
-    public function staticPageUrl(string $id, string $cultuer): string
+    public function staticPageUrl(string $id, string $culture): string
     {
-        return ($this->router)()->urlFor('staticPage', ['url' => $id, 'culture'=> $cultuer]);
+        return ($this->router)()->urlFor('staticPage', ['url' => $id, 'culture'=> $culture]);
+    }
+
+    public function recipeListUrl(string $culture): string
+    {
+        return ($this->router)()->urlFor('recipeList', ['culture'=> $culture]);
     }
 }

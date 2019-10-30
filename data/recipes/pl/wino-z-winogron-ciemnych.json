@@ -1,0 +1,18 @@
+{
+  "title": "Wino z ciemnych winogron",
+  "head": "Winogrona idealnie nadają się jako materiał na pierwsze wino. Ich obróbka nie jest trudna, choć w porównaniu z winogronami jasnymi wymagają więcej pracy, jednak końcowe wino jest tak samo wyśmienite. Jeżeli posiadamy odmiany typowo winne, warto się pokusić o zrobienie wina gronowego, czyli bez dodatku wody, w efekcie otrzymamy trunek o znacznie bogatszym smaku i aramocie.",
+  "engine": "single",
+  "calculator": {
+    "fruit": "Winogrona",
+    "sugar": 0,
+    "acid": 0
+  },
+  "steps": [
+    {
+
+    },
+    {
+
+    }
+  ]
+}

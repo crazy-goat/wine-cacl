@@ -1,28 +1,28 @@
 <?php
 declare(strict_types=1);
 
-namespace WineCalc\StaticPages;
+namespace WineCalc\Calculator;
 
-class Loader
+final class Loader
 {
     /**
      * @var string
      */
     private $path;
-
-    /** @var bool */
     private $loaded;
-    /**
-     * @var array
-     */
-    private $cultures;
     private $data;
+    private $cultures;
 
+    /**
+     * Loader constructor.
+     * @param string $path
+     * @param array $cultures
+     */
     public function __construct(string $path, array $cultures)
     {
         $this->path = $path;
-        $this->cultures = $cultures;
         $this->loaded = false;
+        $this->cultures = $cultures;
     }
 
     public function load(): array
@@ -32,11 +32,10 @@ class Loader
             foreach ($this->cultures as $culture) {
                 $files = glob($this->path.'/'.$culture.'/*.json');
                 foreach ($files as $file) {
-                    $page = Page::parse($file);
+                    $page = Single::parse($file);
                     $this->data[$culture][$page->getId()] = $page;
                 }
             }
-            $this->loaded = true;
         }
 
         return $this->data;

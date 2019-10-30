@@ -75,5 +75,14 @@ return [
     },
     'staticPage::render' => function(ContainerInterface $container): \WineCalc\StaticPages\Data {
         return new \WineCalc\StaticPages\Data($container->get('staticPage::loader'));
-    }
+    },
+    'calculator::loader' => function(ContainerInterface $container): \WineCalc\Calculator\Loader {
+        return new \WineCalc\Calculator\Loader(
+            (string)$container->get('recipes_dir'),
+            $container->get('translations')
+        );
+    },
+    'calculator::render' => function(ContainerInterface $container): \WineCalc\Calculator\Data {
+        return new \WineCalc\Calculator\Data($container->get('calculator::loader'));
+    },
 ];

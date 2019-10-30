@@ -18,7 +18,12 @@ final class Main {
         $this->render = $render;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response) {
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     */
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
         $response->getBody()->write(
             $this->render->render(
                 'main/index',

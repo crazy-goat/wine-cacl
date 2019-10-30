@@ -1,18 +1,70 @@
 {
-  "title": "Wino z ciemnych winogron",
-  "head": "Winogrona idealnie nadają się jako materiał na pierwsze wino. Ich obróbka nie jest trudna, choć w porównaniu z winogronami jasnymi wymagają więcej pracy, jednak końcowe wino jest tak samo wyśmienite. Jeżeli posiadamy odmiany typowo winne, warto się pokusić o zrobienie wina gronowego, czyli bez dodatku wody, w efekcie otrzymamy trunek o znacznie bogatszym smaku i aramocie.",
-  "engine": "single",
+  "engine": "wine-single",
   "calculator": {
     "fruit": "Winogrona",
     "sugar": 0,
     "acid": 0
   },
+  "seo": {
+    "title": "Wino z ciemnych winogron",
+    "description": "",
+    "keywords": [
+    ]
+  },
+  "title": "Wino z ciemnych winogron",
+  "head": [
+    "Winogrona idealnie nadają się jako materiał na pierwsze wino.",
+    "Ich obróbka nie jest trudna, choć w porównaniu z winogronami jasnymi wymagają więcej pracy.",
+    "Końcowe wino jest jednka tak samo wyśmienite.",
+    "Jeżeli posiadamy odmiany typowo winne, warto pokusić się o zrobienie wina gronowego, czyli bez dodatku wody.",
+    "W ten sposób otrzymamy trunek o znacznie bogatszym smaku i aramocie."
+  ],
   "steps": [
     {
-
+      "title": "Przygotowanie owoców",
+      "text": [
+        "Na początku kiście winogron należy dobrze opłukać pod zimną, bieżącą wodą.",
+        "Operacja ta jest praktycznie niezbędna gdyż w kiściach winogron roi się od różnorodnych pajączków, muszek i innych żywych stworzeń, których nie chcemy w winie.",
+        "Następnie musimy oddzielić grona od gałązek.",
+        "Tak uzyskane owoce należy zmiażdżyć ale nie miksować.",
+        "Najlepszym narzędziem będzie mieszadło do betonu/farb mocowane na wiertarce.",
+        "Dużo radości da ich deptanie, jednak należy uważać, gdyż niektóre osoby mogą mieć potem uczulenie na stopach."
+      ]
     },
     {
-
+      "title": "Fermentacja",
+      "text": [
+        "Tak przygotowane owoce można poddać fermentacji w miazdze.",
+        "Pozwoli ona na lepsze wyługowanie koloru oraz z smaku z ciemnych winogron, dzięki czemu bukiet oraz smak końcowy będzie bardziej wyrazisty.",
+        "Miazgę wlewamy do naszego pojemnika fermentacyjnego dodajemy pektopl oraz gorący syrop cukrowy",
+        "(podwyższona temperatura powoduje lepsze działanie środków pektopolicznych).",
+        "Jeżeli wyrabiamy wino mocne, należy pamiętać o podziale syropu cukrowego na porcje.",
+        "Gdy miazga ostygnie do temperatury pokojowej, można dodać pożywki i drożdży."
+      ]
+    },
+    {
+      "text": [
+        "Całość przykrywamy i odstawiamy na 7 dni. Należy pamiętać żeby choć raz dziennie zamieszać winem, w celu zlikwidowania czapy z owocowów",
+        "Po tym czasie wino powinno pracować pełną para, na wierzchu będzie widoczna czapa, która należy zebrać i odcisnąć i wlać razem z resztą moszczu do balona.",
+        "Jeżeli jest to wino mocne to jest to odpowiednia pora aby dodać drugą porcję syropu cukrowego, oczywiście należy pamiętać aby go wcześniej wystudzić.",
+        "Tak przygotowane wino zatykamy korkiem z rurką fermentacyjną i zostawiamy na 3 tygodnie w przypadku win lekkich lub 12 w przypadku win mocnych.",
+        "Następnie zlewamy wino znad osadu, kolejne obciągi dokonujemy w odstępach miesięcznych.",
+        "Wino gronowe gotowe jest po 8 miesiącach od daty nastawu, ale najlepiej smakuj dopiero po roku a nawet 2 latach."
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "type": "info",
+      "text": [
+        "Wino z czerwonych winogron najlepiej smakuje jako wino jednoowocowe i dlatego nie powinno się mieszać z innymi owocami."
+      ]
+    },
+    {
+      "type": "warning",
+      "text": [
+        "Im dłużej fermentujemy w miazdze tym lepsze wino uzyskamy, jednak nie powinno się fermentować dłużej niż dwa tygodnie."
+      ]
     }
   ]
 }

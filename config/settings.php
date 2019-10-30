@@ -6,5 +6,6 @@ return [
     ],
     'translations' => ['en', 'pl'],
     'default_locale' => 'en',
-    'static_pages_dir' => realpath(__DIR__.'/../data/static_pages')
+    'static_pages_dir' => realpath(__DIR__.'/../data/static_pages'),
+    'recipes_dir' => realpath(__DIR__.'/../data/recipes')
 ];

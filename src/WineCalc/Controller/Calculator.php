@@ -7,24 +7,25 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpNotFoundException;
-use WineCalc\StaticPages\Page;
-use WineCalc\StaticPages\Data;
+use WineCalc\Calculator\Data;
+use WineCalc\Calculator\Loader;
+use WineCalc\Calculator\Single;
 
-class StaticPage
+final class Calculator
 {
-    /**
-     * @var Data
-     */
-    private $staticPage;
     /**
      * @var Engine
      */
     private $render;
+    /**
+     * @var Loader
+     */
+    private $loader;
 
-    public function __construct(Data $staticPage, Engine $render)
+    public function __construct(Engine $render, Data $loader)
     {
-        $this->staticPage = $staticPage;
         $this->render = $render;
+        $this->loader = $loader;
     }
 
     /**
@@ -33,22 +34,24 @@ class StaticPage
      * @return ResponseInterface
      * @throws HttpNotFoundException
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
-        $staticPage = $this->staticPage->getStaticPage(
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        $recipe = $this->loader->getRecipe(
             $request->getAttribute('culture'),
             $request->getAttribute('url')
         );
 
-        if (!$staticPage instanceof Page) {
+        if (!$recipe instanceof Single) {
             throw new HttpNotFoundException($request);
         }
 
         $response->getBody()->write(
             $this->render->render(
-                'static_page/index',
-                $this->staticPage->getData($staticPage)
+                'calculator/index',
+                $this->loader->getData($recipe)
             )
         );
+
         return $response;
     }
 }

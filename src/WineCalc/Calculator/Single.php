@@ -43,7 +43,7 @@ final class Single
             throw new \RuntimeException('File '.$filename.' not exists or is not readable');
         }
 
-        $data = json_decode(file_get_contents($filename), true);
+        $data = json_decode((string)file_get_contents($filename), true);
         if ($data === false) {
             throw new \RuntimeException('Error reading json file ('.$filename.'): '.json_last_error_msg());
         }

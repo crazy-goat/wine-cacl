@@ -10,7 +10,7 @@ final class Step
      */
     private $title;
     /**
-     * @var array
+     * @var string
      */
     private $text;
 

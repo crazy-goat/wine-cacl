@@ -31,9 +31,11 @@ final class Loader
             $this->data = [];
             foreach ($this->cultures as $culture) {
                 $files = glob($this->path.'/'.$culture.'/*.json');
-                foreach ($files as $file) {
-                    $page = Single::parse($file);
-                    $this->data[$culture][$page->getId()] = $page;
+                if (is_array($files)) {
+                    foreach ($files as $file) {
+                        $page = Single::parse($file);
+                        $this->data[$culture][$page->getId()] = $page;
+                    }
                 }
             }
         }

@@ -5,12 +5,11 @@ namespace WineCalc\Plates\Extensions;
 
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
-use Slim\Interfaces\RouteParserInterface;
 
 final class Links implements ExtensionInterface
 {
     /**
-     * @var RouteParserInterface
+     * @var \Closure
      */
     private $router;
 

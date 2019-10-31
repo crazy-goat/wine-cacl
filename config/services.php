@@ -20,10 +20,13 @@ return [
         $app->addRoutingMiddleware();
 
         $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-        $errorMiddleware->getDefaultErrorHandler()->registerErrorRenderer(
-            'text/html',
-            $container->get('error_handler.html')
-        );
+        $errorHandler = $errorMiddleware->getDefaultErrorHandler();
+        if ($errorHandler instanceof \Slim\Handlers\ErrorHandler) {
+            $errorHandler->registerErrorRenderer(
+                'text/html',
+                $container->get('error_handler.html')
+            );
+        }
         return $app;
     },
     'middleware.accept-language' => function(ContainerInterface $container): \WineCalc\Middleware\AcceptLanguage {

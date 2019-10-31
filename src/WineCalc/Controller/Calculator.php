@@ -18,7 +18,7 @@ final class Calculator
      */
     private $render;
     /**
-     * @var Loader
+     * @var Data
      */
     private $loader;
 

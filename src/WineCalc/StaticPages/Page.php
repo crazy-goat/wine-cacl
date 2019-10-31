@@ -28,7 +28,7 @@ final class Page
     public static function parse(string $path): Page
     {
         $parser = new Parsedown();
-        $data = json_decode(file_get_contents($path), true);
+        $data = json_decode((string)file_get_contents($path), true);
         if (!is_array($data)) {
             throw new \InvalidArgumentException('Error parsing json');
         }

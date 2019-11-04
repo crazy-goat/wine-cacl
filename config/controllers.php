@@ -16,7 +16,7 @@ return [
     'controller::calculator' => function(ContainerInterface $container): \WineCalc\Controller\Calculator {
         return new \WineCalc\Controller\Calculator(
             $container->get('renderer'),
-            $container->get('calculator::render'),
+            $container->get('calculator::render')
         );
     }
 ];

@@ -1,8 +1,21 @@
 runtime: php72
-
+env: standard
+instance_class: F1
 handlers:
-- url: /public
-  static_dir: public
-  expiration: "30d"
-- url: .*
-  script: index.php
+- url: /public/(.*)
+  expiration: 2592000000
+  static_files: public/\1
+  require_matching_file: true
+  upload: public/.*
+- url: /favicon.ico
+  expiration: 2592000000
+  static_files: public/favicon.ico
+  upload: public/.*
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic
+  min_instances: 1
+  max_instances: 1
+network: {}

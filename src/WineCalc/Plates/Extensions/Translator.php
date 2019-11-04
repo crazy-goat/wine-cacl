@@ -32,6 +32,6 @@ final class Translator implements ExtensionInterface
 
     public function lang(): string
     {
-        return $this->translator->getLocale();
+        return $this->translator->getLocale() ?? 'en';
     }
 }

@@ -1,18 +1,8 @@
-runtime: custom
-api_version: '1.0'
-env: flexible
-threadsafe: true
-manual_scaling:
-  instances: 1
-network: {}
-resources:
-  cpu: 1
-  memory_gb: 0.5
-  disk_size_gb: 10
-
-default_expiration: "30d"
+runtime: php72
 
 handlers:
-  - url: /.+     # this should handle the favicon.ico, but see below
-    static_dir: public
-    expiration: "30d"
+- url: /public
+  static_dir: public
+  expiration: "30d"
+- url: .*
+  script: index.php
